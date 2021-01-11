@@ -8,6 +8,8 @@ authors = ["RaniaAbdullahh <raniaabdullah6600@gmail.com>"]
 python = "^3.9"
 Django = "^3.1.5"
 djangorestframework = "^3.12.2"
+psycopg2 = "^2.8.6"
+psycopg2-binary = "^2.8.6"
 
 [tool.poetry.dev-dependencies]
 
