@@ -20,16 +20,16 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/3.1/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = '@wrcyhl2uf%2yie&l0+ua&yxr)cci^+gbr8n)0w^^e4s5jyq7%'
+#SECRET_KEY = '@wrcyhl2uf%2yie&l0+ua&yxr)cci^+gbr8n)0w^^e4s5jyq7%'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+#DEBUG = True
 
 
 
 
 # Application definition
-ALLOWED_HOSTS = ['0.0.0.0','localhost','127.0.0.1']
+#ALLOWED_HOSTS = ['0.0.0.0','localhost','127.0.0.1']
 
 INSTALLED_APPS = [
     'django.contrib.admin',
@@ -85,6 +85,35 @@ DATABASES = {
         'PORT': 5432,
     }
 }
+
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME':  'uxpqhfkz',
+        'USER': 'uxpqhfkz',
+        'PASSWORD':'OaSbzUP7akI2cFstp1MSjnpSdcAWBVCP' ,
+        'HOST': 'ziggy.db.elephantsql.com',
+        'PORT': 5432,
+    }
+}
+
+
+
+import environ
+
+env = environ.Env(
+    DEBUG = (bool,False)
+)
+environ.Env.read_env()
+import environ
+
+env = environ.Env(
+    DEBUG = (bool,False)
+)
+environ.Env.read_env()
+SECRET_KEY = env('SECRET_KEY')
+DEBUG = env('DEBUG')
+ALLOWED_HOSTS = tuple(env.list('ALLOWED_HOSTS'))
 
 # Password validation
 # https://docs.djangoproject.com/en/3.1/ref/settings/#auth-password-validators
